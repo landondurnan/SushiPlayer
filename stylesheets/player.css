@@ -11,13 +11,9 @@
 
 
 .simple-example {
-  height: 65px;
-  padding: 8px;
-  border-left: 1px solid #ededed;
   position: relative;
-  width: 400px;
   z-index: 100;
-  margin-right: 50px;
+  width: 400px;
 }
 .simple-example .sp-artwork,
 .simple-example .sp-controls,
@@ -26,11 +22,14 @@
   z-index: 30;
 }
 .simple-example .sp-scrubber {
-  display: none;
-  /* temp fix */
+  background-color: #f5f5f5;
+  float: left;
+  height: 50px;
+  position: relative;
+  width: 280px;
 }
 .simple-example .sp-scrubber .buffer {
-  background-color: #f5f5f5;
+  background-color: #eeeeee;
   height: 100%;
   position: absolute;
   z-index: 11;
@@ -44,34 +43,28 @@
 .simple-example .sp-artwork {
   margin: 0 15px 0 0;
   float: left;
-  width: 49px;
 }
-.simple-example .sp-artwork img {
-  width: 49px;
-}
+.simple-example .sp-artwork img {}
 .simple-example .sp-controls {
   float: left;
   margin-right: 15px;
   font-size: 18px;
-  line-height: 49px;
+  line-height: 100px;
   position: absolute;
-  width: 49px;
+  width: 100px;
   text-align: center;
 }
-.simple-example .sp-controls a {
+.simple-example .sp-controls a,
+.simple-example .sp-controls a:hover {
   color: #fff;
   text-decoration: none;
-  border: 3px solid #fff;
-  padding: 3px 4px 6px;
-  border-radius: 20px;
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  font-size: 38px;
+  text-decoration: none;
+  border: 0;
 }
 .simple-example .sp-title {
   float: left;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 319px;
 }
 .simple-example .sp-title a {
   font-size: 16px;
@@ -81,3 +74,5 @@
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
+.simple-example .time { line-height: 44px; padding: 3px 10px; z-index: 13; position: absolute; }
+.simple-example .totaltime { right: 10px; }

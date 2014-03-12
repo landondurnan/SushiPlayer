@@ -6,6 +6,8 @@
     <title>Sushi Player by robotsarego</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/player.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,21 +27,33 @@
         </ul>
         </div>
       </header>
-      <section class="content">
-        <p>An audio player that works with either SoundCloud URLs or regular MP3 files. When using SoundCloud URLs there is the option to output the SoundCloud waveform thanks to <a href="http://waveformjs.org/" target="_blank">waveform.js</a></p>
+      <section class="content clearfix">
+        <h2>Description</h2>
+        <p>A customized audio player that works with either SoundCloud URLs or regular MP3 files. When using SoundCloud URLs there is the option to output the SoundCloud waveform thanks to <a href="http://waveformjs.org/" target="_blank">waveform.js</a></p>
+        <p>Features also include a lot of customization of visual output and the capability to use as a persistent audio player on a site.</p>
 
+        <p>Developed for <a href="http://bigsushi.fm" target="_blank">BigSushi.fm</a> where you can see examples of it in production.</p> 
 
+        <p><strong>Special Thanks:</strong><br />
+        GitHub User: <a href="https://github.com/kilokeith" target="_blank">kilokeith</a>. In which the majority of this plugin is based on his <a href="https://github.com/kilokeith/soundcloud-soundmanager-player" target="_blank">soundcloud-soundmanager-player</a></p>
+
+        <h2>Setup</h2>
+
+        <h3>Scripts</h3>
+        <ul>
+          <li>jQuery (>= 1.7)</li>
+          <li>SoundCloud JS SDK</li>
+          <li>SoundManager2</li>
+          <li>waveform.js (optional)</li>
+          <li>Sushi Player (what you're here for)</li>
+        </ul>
 
         <h2>Simple Example</h2>
 
         <h3>Before</h3>
         <pre><code>&lt;a href=&quot;https://soundcloud.com/thecellocompanion/teaser-theme-from-andante&quot; class=&quot;sushi-player&quot;&gt;&lt;/a&gt;</code></pre>
 
-
         <h3>After</h3>
-        <a href="https://soundcloud.com/thecellocompanion/teaser-theme-from-andante" class="sushi-player"></a>
-
-        <h3>Styled</h3>
         <a href="https://soundcloud.com/thecellocompanion/teaser-theme-from-andante" class="sushi-player simple-example"></a>
 
       </section>

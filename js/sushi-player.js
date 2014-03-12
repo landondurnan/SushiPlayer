@@ -45,7 +45,6 @@
 
       // We need to check if the sound is a regular mp3
       if ( trackURL.indexOf('.mp3') > -1 ) {
-        this.config.scrubber = '<div class="sp-scrubber small-seek"><div class="buffer"></div><div class="played"><span id="detailTime" class="time"></span></div><span class="time totaltime" id="totalTime"></span></div>',
         tempURL = trackURL.replace(/^.*[\\\/]/, '');
         tempURL = tempURL.substr(0, tempURL.indexOf('mp3')-1 );
         mp3Track = {
@@ -151,6 +150,8 @@
         playerClass = playerClass + ' playing' ;
       } 
 
+      if ( !this.config.permalink ) { this.config.permalink = track.permalink_url; }
+
       // Build the player
       this.$player
         .attr('id', playerID)
@@ -182,18 +183,10 @@
         .append( this.config.scrubber );
               
 
-      if ( playerID === 'detail-player') {
-        // Bonus download track button - shouldn't be part of plugin?
-        $('.download')
-          .removeClass('hidden')
-          .find('a.btn')
-            .attr('href', track.download_url + '?client_id=' + this.config.consumer_key);
-
-        if ( track.duration ) {
-          this.$player
-            .find('.sp-scrubber .totaltime')
-            .text(this.getTrackTime(track.duration));
-        }
+      if ( track.duration ) {
+        this.$player
+          .find('.sp-scrubber .totaltime')
+          .text(this.getTrackTime(track.duration));
       }
 
       this.$element.replaceWith(this.$player);
@@ -417,7 +410,7 @@
     artwork: '<div class="sp-artwork"></div>',
     artworkurl: null,
     title: '<div class="sp-title"></div>',
-    controls: '<div class="sp-controls"><a href="#play" class="sp-play">Play</a> <a href="#pause" class="sp-pause">Pause</a></div>',
+    controls: '<div class="sp-controls"><a href="#play" class="sp-play"><i class="fa fa-play"></i></a> <a href="#pause" class="sp-pause"><i class="fa fa-pause"></i></a></div>',
     scrubber: '<div class="sp-scrubber"><div class="buffer"></div><div class="played"><span id="detailTime" class="time"></span></div><span class="time totaltime"></span></div>',
   }
 
