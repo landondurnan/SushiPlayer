@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sushi Player</title>
+  <link rel="stylesheet" href="/css/normalize.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="/css/main.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+<h1>Sushi Player</h1>
+
+<h2>Simple Example</h2>
+
+<h3>Before</h3>
+<code>
+&lt;a href=&quot;https://soundcloud.com/thecellocompanion/teaser-theme-from-andante&quot; class=&quot;sushi-player&quot;&gt;&lt;/a&gt;
+</code>
+
+
+<h3>After</h3>
+<a href="https://soundcloud.com/thecellocompanion/teaser-theme-from-andante" class="sushi-player"></a>
+
+<h3>Styled</h3>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//connect.soundcloud.com/sdk.js"></script>
+<script src="/js/lib/soundmanager2-nodebug-jsmin.js"></script>
+<script src="/js/lib/waveform.js"></script>
+<script src="/js/sushi-player.js"></script>
+<script>
+  $('a.sushi-player').sushiplayer();
+</script>
+</body>
+</html>

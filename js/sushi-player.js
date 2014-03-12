@@ -5,7 +5,7 @@
  * Author: Landon Durnan
  */
 
-;(function ( $, window, document, SushiSite, undefined ) {
+;(function ( $, window, document, undefined ) {
 
   soundManager.setup({
       url: '/assets/swf/'
@@ -417,7 +417,7 @@
     artwork: '<div class="sp-artwork"></div>',
     artworkurl: null,
     title: '<div class="sp-title"></div>',
-    controls: '<div class="sp-controls"><a href="#play" class="sp-play glyphicon glyphicon-play"></a> <a href="#pause" class="sp-pause glyphicon glyphicon-pause"></a></div>',
+    controls: '<div class="sp-controls"><a href="#play" class="sp-play">Play</a> <a href="#pause" class="sp-pause">Pause</a></div>',
     scrubber: '<div class="sp-scrubber"><div class="buffer"></div><div class="played"><span id="detailTime" class="time"></span></div><span class="time totaltime"></span></div>',
   }
 
