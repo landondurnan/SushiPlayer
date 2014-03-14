@@ -109,3 +109,13 @@
 }
 .mp3-example .time { line-height: 44px; padding: 3px 10px; z-index: 13; position: absolute; }
 .mp3-example .totaltime { right: 10px; }
+
+
+/* Waveform Example (combined with simple-example for brevity) */
+.waveform-example { width: 800px; }
+.waveform-example .sp-title a { line-height: 18px; }
+.waveform-example .sp-scrubber { width: 600px; height: 100px; } /* width and height won't set the waveform dimensions if it's hidden on init */
+.waveform-example .sp-scrubber,
+.waveform-example .sp-scrubber .buffer,
+.waveform-example .sp-scrubber .played { background-color: transparent; }
+.waveform-example .time { line-height: 95px; color: #fff; }

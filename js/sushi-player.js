@@ -250,7 +250,9 @@
 
       this.waveform = new Waveform({
         container: this.$player.find('.sp-scrubber').get(0),
-        innerColor: "rgba(0, 0, 0, 0.2)"
+        innerColor: "rgba(0, 0, 0, 0.2)",
+        width: 600, /* can be done in css if waveform isn't hidden on init */
+        height: 100 /* can be done in css if waveform isn't hidden on init */
       });
 
       // get waveform.js to pull the waveform form the track
@@ -258,9 +260,9 @@
       
       //get the waveform update functions back, pass your sweet colors here
       this.waveformUpdater = this.waveform.optionsForSyncedStream({
-          playedColor: "rgba(225, 107, 61, 0.8)"
-        , loadedColor: "rgba(225, 107, 61, 0.4)"
-        , defaultColor: "rgba(0, 0, 0, 0.2)"
+          playedColor: "rgba(255,  102, 0, 0.8)"
+        , loadedColor: "rgba(0, 0, 0, 0.8)"
+        , defaultColor: "rgba(0, 0, 0, 0.4)"
       });
 
       //a little slower than direct, but let the events pass down to the waveform updater
