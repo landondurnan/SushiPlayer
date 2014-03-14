@@ -27,7 +27,6 @@
     this.config = $.extend({}, $.fn.sushiplayer.defaults, this.$element.data(), options);
     this.trackURL = this.$element.get(0).href;
     this.permalink = this.$element.data('permalink');
-    this.tracklist = this.config.tracklist;
     this.cache = {};
     this.init();
   }
@@ -45,12 +44,11 @@
 
       // We need to check if the sound is a regular mp3
       if ( trackURL.indexOf('.mp3') > -1 ) {
-        this.config.scrubber = '<div class="sp-scrubber small-seek"><div class="buffer"></div><div class="played"><span id="detailTime" class="time"></span></div><span class="time totaltime" id="totalTime"></span></div>',
         tempURL = trackURL.replace(/^.*[\\\/]/, '');
         tempURL = tempURL.substr(0, tempURL.indexOf('mp3')-1 );
         mp3Track = {
           'id': tempURL,
-          'title': $('.entry-title').text(), 
+          'title': this.$element.text(), 
           'artwork_url': this.config.artworkurl,
           'download_url': trackURL
         };
@@ -94,7 +92,7 @@
       this.on('sushiplayer.track.whileplaying', function(e, trackID, pos, percent) {
         $('.audio-player[data-track-id="' + trackID + '"] .sp-scrubber .played')
           .css('width', percent + '%')
-          .find('#detailTime').text( that.getTrackTime(pos) );
+          .find('.currenttime').text( that.getTrackTime(pos) );
       });
 
       this.on('sushiplayer.position', function(e, pos) {
@@ -151,13 +149,15 @@
         playerClass = playerClass + ' playing' ;
       } 
 
+      if ( !this.config.permalink ) { this.config.permalink = track.permalink_url; }
+
       // Build the player
       this.$player
         .attr('id', playerID)
         .attr('data-track-id', track.id)
         .addClass( playerClass.replace(/sushi-player|hidden/gi, '') )
 
-      if ( this.config.artwork ) {
+      if ( this.config.artwork && ( this.config.artworkurl || track.artwork_url ) ) {
         this.$player
           .append( this.config.artwork )
           .find('.sp-artwork')
@@ -182,18 +182,10 @@
         .append( this.config.scrubber );
               
 
-      if ( playerID === 'detail-player') {
-        // Bonus download track button - shouldn't be part of plugin?
-        $('.download')
-          .removeClass('hidden')
-          .find('a.btn')
-            .attr('href', track.download_url + '?client_id=' + this.config.consumer_key);
-
-        if ( track.duration ) {
-          this.$player
-            .find('.sp-scrubber .totaltime')
-            .text(this.getTrackTime(track.duration));
-        }
+      if ( track.duration ) {
+        this.$player
+          .find('.sp-scrubber .totaltime')
+          .text(this.getTrackTime(track.duration));
       }
 
       this.$element.replaceWith(this.$player);
@@ -227,7 +219,7 @@
           if ( !track.duration ) { 
             track.duration = this.duration;
             that.trackDuration = this.duration;
-            $('#totalTime').text( that.getTrackTime(this.duration) ); // Backup duration output for mp3
+            that.$player.find('.totaltime').text( that.getTrackTime(this.duration) ); // Backup duration output for mp3
             that.readySeekEvent();
           }
           
@@ -406,19 +398,14 @@
   }
 
   $.fn.sushiplayer.defaults = {
-    callback : function(){},
     consumer_key: "83458ced0e5f2532df0c1f60747f77bc",
-    autoplay: false,
-    loop: false,
-    preload: true,
     permalink: null,
-    tracklist: [],
-    scrubtype: 'scrubber',
-    artwork: '<div class="sp-artwork"></div>',
+    scrubtype: 'bar',
     artworkurl: null,
+    artwork: '<div class="sp-artwork"></div>',
     title: '<div class="sp-title"></div>',
-    controls: '<div class="sp-controls"><a href="#play" class="sp-play">Play</a> <a href="#pause" class="sp-pause">Pause</a></div>',
-    scrubber: '<div class="sp-scrubber"><div class="buffer"></div><div class="played"><span id="detailTime" class="time"></span></div><span class="time totaltime"></span></div>',
+    controls: '<div class="sp-controls"><a href="#play" class="sp-play"><i class="fa fa-play"></i></a> <a href="#pause" class="sp-pause"><i class="fa fa-pause"></i></a></div>',
+    scrubber: '<div class="sp-scrubber"><div class="buffer"></div><div class="played"><span class="time currenttime"></span></div><span class="time totaltime"></span></div>'
   }
 
 })( jQuery, window, document );
