@@ -29,34 +29,63 @@
         </div>
       </header>
       <section class="content clearfix">
-        <h2>Description</h2>
-        <p>A customized audio player that works with either SoundCloud URLs or regular MP3 files. When using SoundCloud URLs there is the option to output the SoundCloud waveform thanks to <a href="http://waveformjs.org/" target="_blank">waveform.js</a></p>
-        <p>Features also include a lot of customization of visual output and the capability to use as a persistent audio player on a site.</p>
 
-        <p>Developed for <a href="http://bigsushi.fm" target="_blank">BigSushi.fm</a> where you can see examples of it in production.</p> 
 
-        <p><strong>Special Thanks:</strong><br />
-        GitHub User: <a href="https://github.com/kilokeith" target="_blank">kilokeith</a>. In which the majority of this plugin is based on his <a href="https://github.com/kilokeith/soundcloud-soundmanager-player" target="_blank">soundcloud-soundmanager-player</a></p>
+        <div class="tab-container">
+          <ul class="tab-nav">
+            <li><a href="#tab-description">Description</a></li>
+            <li><a href="#tab-setup">Setup</a></li>
+            <li><a href="#tab-documentation">Documentation</a></li>
+            <li><a href="#tab-examples">Examples</a></li>
+          </ul>
+          <div class="tab-content" id="tab-description">
+            <p>A customized audio player that works with either SoundCloud URLs or regular MP3 files. When using SoundCloud URLs there is the option to output the SoundCloud waveform thanks to <a href="http://waveformjs.org/" target="_blank">waveform.js</a></p>
+            <p>Features also include a lot of customization of visual output and the capability to use as a persistent audio player on a site.</p>
 
-        <h2>Setup</h2>
+            <p>Developed for <a href="http://bigsushi.fm" target="_blank">BigSushi.fm</a> where you can see examples of it in production.</p> 
 
-        <h3>Scripts</h3>
-        <ul>
-          <li>jQuery (>= 1.7)</li>
-          <li>SoundCloud JS SDK</li>
-          <li>SoundManager2</li>
-          <li>waveform.js (optional)</li>
-          <li>Sushi Player (what you're here for)</li>
-        </ul>
+            <p><strong>Special Thanks:</strong><br />
+              GitHub User: <a href="https://github.com/kilokeith" target="_blank">kilokeith</a>. In which the majority of this plugin is based on his <a href="https://github.com/kilokeith/soundcloud-soundmanager-player" target="_blank">soundcloud-soundmanager-player</a></p>
+            </div>
+            <div class="tab-content" id="tab-setup">
 
-        <h2>Simple Example</h2>
+              <h3>Scripts</h3>
+              <ul>
+                <li>jQuery (>= 1.7) </li>
+                <li>SoundCloud JS SDK</li>
+                <li><a href="http://www.schillmania.com/projects/soundmanager2/" target="_blank">SoundManager2 <i class="fa fa-external-link"></i></a></li>
+                <li><a href="http://waveformjs.org/" target="_blank">waveform.js (optional) <i class="fa fa-external-link"></i></a></li>
+                <li>Sushi Player (what you're here for)</li>
+              </ul>
 
-        <h3>Before</h3>
-        <pre><code>&lt;a href=&quot;https://soundcloud.com/thecellocompanion/teaser-theme-from-andante&quot; class=&quot;sushi-player&quot;&gt;&lt;/a&gt;</code></pre>
+              <pre><code>&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;//connect.soundcloud.com/sdk.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/js/lib/soundmanager2-nodebug-jsmin.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/js/lib/waveform.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/js/sushi-player.js&quot;&gt;&lt;/script&gt;</code></pre>
 
-        <h3>After</h3>
-        <a href="https://soundcloud.com/thecellocompanion/teaser-theme-from-andante" class="sushi-player simple-example"></a>
+              <h2>Initialize</h2>
+              <pre><code>$('a.sushi-player').sushiplayer();</code></pre>
+            </div>
+            <div class="tab-content" id="tab-documentation">
+              
+            </div>
+            <div class="tab-content" id="tab-examples">
+              <h2>Simple SoundCloud Example</h2>
 
+              <h3>Before</h3>
+              <pre><code>&lt;a href=&quot;https://soundcloud.com/thecellocompanion/teaser-theme-from-andante&quot; class=&quot;sushi-player&quot;&gt;&lt;/a&gt;</code></pre>
+
+              <h3>After</h3>
+              <a href="https://soundcloud.com/thecellocompanion/teaser-theme-from-andante" class="sushi-player simple-example"></a>
+
+              <h2>Simple MP3 Example</h2>
+              <h3>Before</h3>
+              <pre><code>&lt;a href=&quot;BigSushi_Intro2.mp3&quot; data-permalink=&quot;http://www.bigsushi.fm&quot; class=&quot;sushi-player mp3-example&quot;&gt;BigSushi.fm Intro - Vanguard&lt;/a&gt;</code></pre>
+              <h3>After</h3>
+              <a href="BigSushi_Intro2.mp3" data-permalink="http://www.bigsushi.fm" class="sushi-player mp3-example">BigSushi.fm Intro - Vanguard</a>
+            </div>
+        </div>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/robotsarego">robotsarego</a></p>
@@ -71,6 +100,22 @@
     <script src="js/sushi-player.js"></script>
     <script>
       $('a.sushi-player').sushiplayer();
+
+      // Just some quick tab code
+      $('.tab-content').hide(); // Initially hide all content
+      $('.tab-nav li:first a').attr('class','active'); // Activate first tab
+      $('.tab-content:first').fadeIn(); // Show first tab content
+      $('.tab-nav li a').click(function(e) {
+        e.preventDefault();
+        if ($(this).attr('class') == 'current') {
+         return;
+        } else {
+          $('.tab-content').hide();
+          $('.tab-nav li a').removeClass('active');
+          $(this).addClass('active');
+          $( $(this).attr('href') ).fadeIn(); // Show content for current tab
+        }
+      });
     </script>
   </body>
 </html>
