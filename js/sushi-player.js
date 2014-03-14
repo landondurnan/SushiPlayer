@@ -219,7 +219,7 @@
           if ( !track.duration ) { 
             track.duration = this.duration;
             that.trackDuration = this.duration;
-            $('.totaltime').text( that.getTrackTime(this.duration) ); // Backup duration output for mp3
+            that.$player.find('.totaltime').text( that.getTrackTime(this.duration) ); // Backup duration output for mp3
             that.readySeekEvent();
           }
           
