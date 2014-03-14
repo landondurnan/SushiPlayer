@@ -64,10 +64,70 @@
 &lt;script src=&quot;/js/lib/waveform.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;/js/sushi-player.js&quot;&gt;&lt;/script&gt;</code></pre>
 
+              <h2>Configure</h2>
+
+              In sushi-player.js go to the bottom of the file and insert your SoundCloud API Consumer Key. If you need a consumer key <a href="http://soundcloud.com/you/apps" target="_blank">go to SoundCloud and Register a New Application  <i class="fa fa-external-link"></i></a>.
+
               <h2>Initialize</h2>
               <pre><code>$('a.sushi-player').sushiplayer();</code></pre>
             </div>
             <div class="tab-content" id="tab-documentation">
+
+              <h2>Defaults</h2>
+
+              <pre><code>
+$.fn.sushiplayer.defaults = {
+  consumer_key: &quot;&quot;, /* your soundcloud consumer key */
+  permalink: null,
+  scrubtype: 'bar',
+  artworkurl: null,
+  artwork: '&lt;div class=&quot;sp-artwork&quot;&gt;&lt;/div&gt;',
+  title: '&lt;div class=&quot;sp-title&quot;&gt;&lt;/div&gt;',
+  controls: '&lt;div class=&quot;sp-controls&quot;&gt;
+              &lt;a href=&quot;#play&quot; class=&quot;sp-play&quot;&gt;&lt;i class=&quot;fa fa-play&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+              &lt;a href=&quot;#pause&quot; class=&quot;sp-pause&quot;&gt;&lt;i class=&quot;fa fa-pause&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;/div&gt;',
+  scrubber: '&lt;div class=&quot;sp-scrubber&quot;&gt;
+              &lt;div class=&quot;buffer&quot;&gt;&lt;/div&gt;
+              &lt;div class=&quot;played&quot;&gt;
+                &lt;span class=&quot;time currenttime&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class=&quot;time totaltime&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;'
+}
+              </code></pre>
+
+
+              <h2>Configurable options</h2>
+
+              You may change the defaults in the plugin or override individual options inline by using data attributes. Simply append the option name to <code>data-</code>, as in <code>data-permalink</code>.
+
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>permalink</td>
+                  <td>URL</td>
+                  <td>null</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>scrubtype</td>
+                  <td>string</td>
+                  <td>bar</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>artworkurl</td>
+                  <td>URL</td>
+                  <td>null</td>
+                  <td></td>
+                </tr>
+              </table>
               
             </div>
             <div class="tab-content" id="tab-examples">

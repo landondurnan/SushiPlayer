@@ -400,12 +400,12 @@
   $.fn.sushiplayer.defaults = {
     consumer_key: "83458ced0e5f2532df0c1f60747f77bc",
     permalink: null,
-    scrubtype: 'scrubber',
-    artwork: '<div class="sp-artwork"></div>',
+    scrubtype: 'bar',
     artworkurl: null,
+    artwork: '<div class="sp-artwork"></div>',
     title: '<div class="sp-title"></div>',
     controls: '<div class="sp-controls"><a href="#play" class="sp-play"><i class="fa fa-play"></i></a> <a href="#pause" class="sp-pause"><i class="fa fa-pause"></i></a></div>',
-    scrubber: '<div class="sp-scrubber"><div class="buffer"></div><div class="played"><span class="time currenttime"></span></div><span class="time totaltime"></span></div>',
+    scrubber: '<div class="sp-scrubber"><div class="buffer"></div><div class="played"><span class="time currenttime"></span></div><span class="time totaltime"></span></div>'
   }
 
 })( jQuery, window, document );
