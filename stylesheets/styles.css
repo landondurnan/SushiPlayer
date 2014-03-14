@@ -222,6 +222,8 @@ header hr {
 .tab-nav a:active { border-bottom: 5px solid transparent; color: #222; }
 .tab-nav a.active { border-bottom: 5px solid #f3f3f3; color: #222; }
 
+.tab-content hr { width: 100%; margin: 2em 0; }
+
 footer {
   margin-top: 4em;
   margin-bottom: 4em;
